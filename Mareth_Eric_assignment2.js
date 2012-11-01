@@ -8,21 +8,24 @@ var s1 = "Jenna";
 var s2 = "Mary";
 var ticklishSpots = [ "feet", "under arms", "neck" ];
 var tickledSecs = 5
-var closeEnough = false;			//	Change these
-var payingAttention = false;		//	responses for a
-var tickledFor = 30;				//	different story.
+var closeEnough = true;				//	Change these responses
+var payingAttention = false;		//	for a different story.
+var tickledFor = 25;				//	<----- DON'T enter a number above 55, I warn you.
 
+
+// To start off the story...
+console.log(s1+ " waited quietly in the shade of the tree to attack her victim.") 
 
 // Array exploring possible body targets
-var getTickleTarget = function() {
+var tickleTarget = function() {
 		for (spotNumber = 0, whichSpot = ticklishSpots.length; spotNumber < whichSpot; spotNumber++){
-			console.log(s1 + " wonders if she should tickle " +s2+ "'s " + ticklishSpots[spotNumber] + "?")
+			console.log(s1 + " wondered if she should attack " +s2+ "'s " + ticklishSpots[spotNumber] + "?")
 		}; 
 	ticklishSpots.pop();
 	ticklishSpots.unshift("ribs");
-	console.log("No, I will definitely tickle her " + ticklishSpots[0] + "!");
+	console.log("\"No, I will definitely attack her " + ticklishSpots[0] + "!\"");
 };
-getTickleTarget();
+tickleTarget();
 
 
 // String function to determine sister's response
@@ -34,7 +37,7 @@ var response = function (success) {
 };
 
 
-// Number function of seconds tickled determines success or failure.
+// Number function to track the number of seconds Mary has been tickled.
 var tickleFight = function(seconds){
 		while (tickledSecs < seconds) {
 			console.log("I have tickled " + s2 + " for " + tickledSecs + " seconds already! When will she give up?");
@@ -44,15 +47,23 @@ var tickleFight = function(seconds){
 };
 
 
-// Boolean operation to determine the correct time to strike
-if (closeEnough === false || !payingAttention === false)
-	response(false),
-	console.log(s1 + " jumped out too early, so she had  to run around the front yard after " + s2 + ".");
-else 
-	console.log(s1 + " leapt from the shadows at " + s2 + " and began tickling.");
-	if (tickledFor >= 30)
+// Additional function to determine if Jenna tickles long enough.
+var tickleLength = function(){
+	if (tickledFor >= 55)
+		console.log("AAWWWWW! You tickled " +s2+ " waaaay too long, and now she's dead. :(");
+	else if (tickledFor >= 30)
 		tickleFight(tickledFor);
 	else
 		console.log("But " + s1 + " didn't tickle " +s2+ " long enough, so she ran away and yelled"),
-		response(false); 
+		response(false);
+}; 
+
+
+// Boolean operation to determine the correct time to strike
+if (closeEnough === false || !payingAttention === false)
+	console.log("But " + s1 + " jumped out too early, so " + s2 + " ran away and yelled"),
+	response(false);
+else 
+	console.log(s1 + " leapt from the shadows at " + s2 + " and began tickling."),
+	tickleLength();
 
