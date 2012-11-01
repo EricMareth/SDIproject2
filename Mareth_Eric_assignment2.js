@@ -10,7 +10,7 @@ var ticklishSpots = [ "feet", "under arms", "neck" ];
 var tickledSecs = 5
 var closeEnough = true;				//	Change these responses
 var payingAttention = false;		//	for a different story.
-var tickledFor = 25;				//	<----- DON'T enter a number above 55, I warn you.
+var tickledFor = 30;				//	<----- DON'T enter a number above 55, I warn you.
 
 
 // To start off the story...
