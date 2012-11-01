@@ -1,25 +1,41 @@
 //Variables
-var sisters = [ "Jenna", "Mary", "Katie", "Lizzie" ];
+var s1 = "Jenna";
+var s2 = "Mary";
 var ticklishSpots = [ "feet", "under her arms", "neck" ];
-var cry = "\"Uncle, " + sisters[0] + ", UNCLE!\"";
-var taunt = "\"HA HA, "+ sisters[0] + " is a stupid-head!\" ";
-var closeEnough = false
+var closeEnough = true
 var payingAttention = false
+var tickledFor = 20
+
+
+// String function to determine sister's response
+var response = function (success) {
+	if (success === true) 
+		console.log("\"Uncle, " + s1 + ", UNCLE!\"");
+	else
+		console.log("\"HA HA, "+ s1 + " is a stupid-head!\" ");
+};
+
+
+//Number function of seconds tickled determines success or failure.
+var tickleFight = function(seconds){
+		for (tickledSecs = 5; tickledSecs < seconds; tickledSecs +=5) {
+			console.log("I have tickled " + s2 + " for " + tickledSecs + " seconds already! When will she give up?")
+		};
+		console.log(s2 + " finally yells "), response(true)
+};
 
 
 // Boolean operation to determine the correct time to strike
 if (closeEnough === false || !payingAttention === false)
-	console.log(taunt + sisters[0] + " chased after " + sisters[1] + ".");
+	response(false),
+	console.log(s1 + " ran around the front yard after " + s2 + ".");
 else 
-	console.log(sisters[0] + " leaps from the shadows at " + sisters[1] + ".");
+	console.log(s1 + " leapt from the shadows at " + s2 + " and began tickling.");
+	if (tickledFor >= 30)
+		tickleFight(tickledFor);
+	else 
+		console.log("But " + s1 + " didn't tickle " +s2+ " long enough, so she ran away and yelled"),
+		response(false) 
+	;
 	
 
-//Number function of seconds tickled determines success or failure.
-var tickleFight = function(seconds){
-		for (tickledSecs = 0; tickledSecs < seconds; tickledSecs +=5) {
-			console.log("I have tickled " + sisters[1] + " for " + tickledSecs + " seconds already! When will she give up?")
-		};
-	console.log(sisters[1] + " yells " + cry)
-};
-
-tickleFight(30);
